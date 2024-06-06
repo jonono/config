@@ -1,0 +1,5 @@
+default-timeout=5000
+max-visible=3
+background-color=#1f1f1fbf
+border-size=0
+font=Fira Code Nerd Font 8

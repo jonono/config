@@ -19,17 +19,6 @@
                 org-mode-hook))
   (add-hook mode #'hook-hide-line-numbers))
 
-(use-package doom-themes
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme `doom-tokyo-night t)
-  (doom-themes-visual-bell-config)
-  (doom-themes-org-config))
-
-(use-package doom-modeline
-  :init (doom-modeline-mode 1))
-
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("melpa-stable" . "https://stable.melpa.org/packages/")
@@ -129,37 +118,6 @@
   :config
   (setq which-key-idle-delay 0.3))
 
-(with-eval-after-load 'org
-  (org-babel-do-load-languages
-      'org-babel-load-languages
-      '((emacs-lisp . t)
-      (python . t)
-      (haskell . t)))
-
-  (require 'org-tempo)
-
-  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-  (add-to-list 'org-structure-template-alist '("hs" . "src haskell")))
-(push '("conf-unix" . conf-unix) org-src-lang-modes)
-
-(defun jon/org-babel-tangle-config ()
-  (when (equal (file-name-directory (directory-file-name buffer-file-name))
-               (concat (getenv "HOME") "/dotfiles/"))
-  (let ((org-confirm-babel-evaluate nil))
-    (org-babel-tangle))))
-
-  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'jon/org-babel-tangle-config)))
-
-(defun jon/org-mode-visual-fill ()
-  (setq visual-fill-column-width 100
-	visual-fill-column-center-text t)
-  (visual-fill-column-mode 1))
-
-(use-package visual-fill-column
-  :defer t
-  :hook (org-mode . jon/org-mode-visual-fill))
-
 (defun jon/org-mode-setup ()
   (org-indent-mode)
   (visual-line-mode 1))
@@ -183,47 +141,102 @@
   (setq org-read-date-force-compatible-dates nil)
 
   (setq org-tag-alist
-	'((:startgroup)
-	  ;; @ location tags
-	  ("@errand" . ?E)
-	  ("@home" . ?H)
-	  ("@dad" . ?D)
-	  (:endgroup)
-	  ;; categories
-	  ("finances" . ?f) ;; financial stuff
-	  ("chore" . ?c)    ;; routine chores
-	  ("house" . ?h)    ;; house-specific things
-	  ("health" .?l)    ;; health-care related
-	  ("agenda" . ?a)
-	  ("note" . ?n)
-	  ("idea" . ?i)
-	  ("recurring" . ?r)))
+        '((:startgroup)
+          ;; @ location tags
+          ("@errand" . ?E)
+          ("@home" . ?H)
+          ("@dad" . ?D)
+          (:endgroup)
+          ;; categories
+          ("finances" . ?f) ;; financial stuff
+          ("chore" . ?c)    ;; routine chores
+          ("house" . ?h)    ;; house-specific things
+          ("health" .?l)    ;; health-care related
+          ("agenda" . ?a)
+          ("note" . ?n)
+          ("idea" . ?i)
+          ("recurring" . ?r)))
 
   (setq org-todo-keywords
-	'((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")))
-	  
+        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")))
+
   (setq org-agenda-files
-	'("~/org/"))
+        '("~/org/"))
   (setq org-capture-templates
-	'(("t" "Tasks")
-	  ("tt" "Task" entry (file+olp "~/org/todo.org" "Inbox")
-	   "* TODO %?\n  %U\n  %a\n" :empty-lines 1)
-	  ("tb" "Task with backlink" entry (file+olp "~/org/todo.org" "Inbox")
-	   "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
-	  ("j" "Journal Entries")
-	  ("jj" "Journal" entry
-	   (file+olp+datetree "~/org/journal.org")
-	   "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
-	   :clock-in :clock-resume
-	   :empty-lines 1)
-	  ("n" "Note" entry (file+headline "~/org/notes.org" "Random Notes")
-	   "** %?" :empty-lines 0 :kill-buffer t)
-	  ("m" "Metrics")
-	  ("mw" "Weight" table-line (file+headline "~/org/metrics.org" "Weight")
-	   "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)
-	  ("mp" "Blood Pressure" table-line (file+headline "~/org/metrics.org" "Blood Pressure")
-	   "| %U | %^{Sys} | %^{Dia} | %^{Notes} |" :kill-buffer t))))
+        '(("t" "Tasks")
+          ("tt" "Task" entry (file+olp "~/org/todo.org" "Inbox")
+           "* TODO %?\n  %U\n  %a\n" :empty-lines 1)
+          ("tb" "Task with backlink" entry (file+olp "~/org/todo.org" "Inbox")
+           "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
+          ("j" "Journal Entries")
+          ("jj" "Journal" entry
+           (file+olp+datetree "~/org/journal.org")
+           "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
+           :clock-in :clock-resume
+           :empty-lines 1)
+          ("n" "Note" entry (file+headline "~/org/notes.org" "Random Notes")
+           "** %?" :empty-lines 0 :kill-buffer t)
+          ("m" "Metrics")
+          ("mw" "Weight" table-line (file+headline "~/org/metrics.org" "Weight")
+           "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)
+          ("mp" "Blood Pressure" table-line (file+headline "~/org/metrics.org" "Blood Pressure")
+           "| %U | %^{Sys} | %^{Dia} | %^{Notes} |" :kill-buffer t))))
+
+(with-eval-after-load 'org
+  (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+      (python . t)
+      (haskell . t)))
+
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("hs" . "src haskell")))
+;(push '("conf-unix" . conf-unix) org-src-lang-modes)
+
+(defun jon/org-babel-tangle-config ()
+  (when (equal (file-name-directory (directory-file-name buffer-file-name))
+               (concat (getenv "HOME") "/dotfiles/"))
+  (let ((org-confirm-babel-evaluate nil))
+    (org-babel-tangle))))
+
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'jon/org-babel-tangle-config)))
+
+(defun jon/org-mode-visual-fill ()
+  (setq visual-fill-column-width 100
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :defer t
+  :hook (org-mode . jon/org-mode-visual-fill))
 
 (use-package magit)
 
 (use-package vundo)
+
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme `doom-tokyo-night t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config))
+
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(doom-modeline doom-themes vundo magit visual-fill-column which-key general evil-collection evil ivy-rich counsel swiper simpleclip helpful)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

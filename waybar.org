@@ -1,0 +1,99 @@
+#+title: waybar.org
+#+PROPERTY: header-args shell
+
+* config file
+
+#+begin_src json :mkdirp yes :tangle waybar/.config/waybar/config.jsonc
+
+  {
+      "layer": "top",
+      "position": "top",
+      "height": 30,
+      "modules-left": ["sway/workspaces", "sway/window"],
+      "modules-right": [
+          "custom/scratchpad",
+          "battery",
+          "clock"
+      ],
+    
+      "sway/workspaces": {
+           "disable-scroll": true,
+           "all-outputs": true
+      },
+    
+      "sway/window": {
+          "format": "{}",
+          "max-length": 50,
+          "tooltip": true
+      },
+
+      "battery": {
+          "format": "{capacity}%"
+      },
+    
+      "clock": {
+          "format-alt": "{:%Y-%m-%d}",
+          "interval": 5
+      },
+  }
+
+#+end_src
+
+* css
+
+#+begin_src css :mkdirp yes :tangle waybar/.config/waybar/style.css
+
+  * {
+      border: none;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+  }
+
+  /* The whole bar */
+  #waybar {
+      background: #000000;
+      color: #7f7f7f;
+      font-family: "Fira Code Nerd Font", "Font Awesome 6 Free", "Font Awesome";
+      font-size: 9px;
+  }
+
+  #window {
+      margin-left: 10px;
+  }
+
+  window#waybar {
+      margin-left: 10px;
+      border-radius: 0;
+  }
+
+  window#waybar.hidden {
+      opacity: 0.2;
+  }
+
+  #workspaces button {
+      padding: 0 0.5em;
+      margin: 2px 1px;
+      color: #7f7f7f;
+  }
+
+  #workspaces button.focused {
+      border-color: #7f7f7f;
+      color: #ffffff;
+      background-color: #000000;
+  }
+
+  #clock,
+  #battery {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: 4px 3px;
+      background: #000000; 
+      color: #7f7f7f;
+  }
+
+  label:focus {
+      background-color: #000000;
+  }
+
+#+end_src
