@@ -187,6 +187,7 @@
       'org-babel-load-languages
       '((emacs-lisp . t)
       (python . t)
+      (shell . t)
       (haskell . t)))
 
   (require 'org-tempo)
