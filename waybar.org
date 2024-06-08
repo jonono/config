@@ -3,7 +3,7 @@
 
 * config file
 
-#+begin_src json :mkdirp yes :tangle waybar/.config/waybar/config.jsonc
+#+begin_src json :mkdirp yes :tangle waybar/dot-config/waybar/config.jsonc
 
   {
       "layer": "top",
@@ -41,7 +41,7 @@
 
 * css
 
-#+begin_src css :mkdirp yes :tangle waybar/.config/waybar/style.css
+#+begin_src css :mkdirp yes :tangle waybar/dot-config/waybar/style.css
 
   * {
       border: none;
@@ -52,8 +52,8 @@
 
   /* The whole bar */
   #waybar {
-      background: #000000;
-      color: #7f7f7f;
+      background: #c0c0c0;
+      color: #000000;
       font-family: "Fira Code Nerd Font", "Font Awesome 6 Free", "Font Awesome";
       font-size: 9px;
   }
@@ -73,14 +73,14 @@
 
   #workspaces button {
       padding: 0 0.5em;
-      margin: 2px 1px;
-      color: #7f7f7f;
+      margin: 4px 3px;
+      color: #000000;
   }
 
   #workspaces button.focused {
-      border-color: #7f7f7f;
-      color: #ffffff;
-      background-color: #000000;
+      border-color: #c0c0c0;
+      color: #000000;
+      background-color: #707070;
   }
 
   #clock,
@@ -88,8 +88,8 @@
       padding-left: 10px;
       padding-right: 10px;
       margin: 4px 3px;
-      background: #000000; 
-      color: #7f7f7f;
+      background: #c0c0c0; 
+      color: #000000;
   }
 
   label:focus {

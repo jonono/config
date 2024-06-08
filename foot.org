@@ -1,5 +1,5 @@
 #+title: foot.org
-#+PROPERTY: header-args shell :mkdirp yes :tangle foot/.config/foot/foot.ini
+#+PROPERTY: header-args shell :mkdirp yes :tangle foot/dot-config/foot/foot.ini
 
 * font settings
 #+begin_src shell
