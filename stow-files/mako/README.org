@@ -1,5 +1,5 @@
 #+title: mako.org
-#+PROPERTY: header-args shell :mkdirp yes :tangle mako/dot-config/mako/config
+#+PROPERTY: header-args shell :mkdirp yes :tangle dot-config/mako/config
 
 * configuration
 #+begin_src shell

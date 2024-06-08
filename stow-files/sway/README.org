@@ -1,5 +1,5 @@
 #+title: sway.org
-#+PROPERTY: header-args shell :mkdirp yes :tangle sway/dot-config/sway/config
+#+PROPERTY: header-args shell :mkdirp yes :tangle dot-config/sway/config
 
 * variables
 modkey is logo/super

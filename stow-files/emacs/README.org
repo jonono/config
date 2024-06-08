@@ -1,5 +1,5 @@
 #+title: emacs.org
-#+PROPERTY: header-args:emacs-lisp :tangle ./emacs/.config/emacs/init.el
+#+PROPERTY: header-args:emacs-lisp :mkdirp yes :tangle ./dot-config/emacs/init.el
 
 * ui
 ** turn annoying stuff off

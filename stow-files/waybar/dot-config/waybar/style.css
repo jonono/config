@@ -1,3 +1,35 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-right": [
+        "custom/scratchpad",
+        "battery",
+        "clock"
+    ],
+
+    "sway/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true
+    },
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 50,
+        "tooltip": true
+    },
+
+    "battery": {
+        "format": "{capacity}%"
+    },
+
+    "clock": {
+        "format-alt": "{:%Y-%m-%d}",
+        "interval": 5
+    },
+}
+
 * {
     border: none;
     min-height: 0;
