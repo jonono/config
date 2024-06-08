@@ -1,7 +1,13 @@
 #!/bin/bash
 
-stow -R --dotfiles --no-folding emacs
-stow -R --dotfiles --no-folding sway
-stow -R --dotfiles --no-folding waybar
-stow -R --dotfiles --no-folding mako
-stow -R --dotfiles --no-folding foot
+# $home
+echo "stowing into \$home"
+stow -v -R --dotfiles --no-folding -t ~ emacs
+stow -v -R --dotfiles --no-folding -t ~ sway
+stow -v -R --dotfiles --no-folding -t ~ waybar
+stow -v -R --dotfiles --no-folding -t ~ mako
+stow -v -R --dotfiles --no-folding -t ~ foot
+
+# /etc
+echo "stowing into /etc"
+sudo stow -v -R --no-folding -t /etc nm-no-rand-mac-addr

@@ -1,0 +1,13 @@
+#+title: nm-no-rand-mac-addr
+#+PROPERTY: header-args shell :mkdirp yes :tangle ./etc/NetworkManager/conf.d/99-no-rand-mac-addr.conf
+
+* 99-no-rand-mac-addr.conf
+
+nothing wrong with mac address randomization but when I'm at home with my laptop (99.999% of the time) I don't need the Eero app telling me a new device connected to my network 50 times a day
+
+#+begin_src shell
+
+  [device]
+  wifi.scan-rand-mac-address=no
+
+#+end_src
