@@ -1,0 +1,82 @@
+#+title: arch stuff
+
+* arch stuff
+** generate list of explicitly installed packages
+*** arch repos (no aur)
+
+#+name: explicitly-installed-packages-arch
+#+begin_src sh :shebang #!/bin/sh :results output
+pacman -Qqen 
+#+end_src
+
+#+RESULTS: explicitly-installed-packages-arch
+#+begin_example
+acpica
+amd-ucode
+base
+base-devel
+bemenu
+bemenu-wayland
+brightnessctl
+btrfs-progs
+efibootmgr
+emacs-wayland
+fastfetch
+firefox
+foot
+fwupd
+git
+greetd
+greetd-tuigreet
+gst-plugin-pipewire
+imagemagick
+iwd
+less
+libnotify
+libpulse
+libva-mesa-driver
+libva-utils
+linux
+linux-firmware
+mako
+man-db
+man-pages
+mpv
+networkmanager
+openssh
+pamixer
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+polkit
+power-profiles-daemon
+python-distro
+python-gobject
+python-packaging
+python-pyudev
+python-systemd
+sof-firmware
+stow
+sway
+swaybg
+swayidle
+swaylock
+tree
+ttf-firacode-nerd
+vim
+waybar
+wireplumber
+wofi
+xorg-xwayland
+zram-generator
+#+end_example
+*** aur
+
+#+name: explicitly-installed-packages-aur
+#+begin_src sh :shebang #!/bin/sh :results output
+pacman -Qqem
+#+end_src
+
+#+RESULTS: explicitly-installed-packages-aur
+: 1password
