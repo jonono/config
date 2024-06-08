@@ -1,10 +1,8 @@
 #+title: waybar.org
-#+PROPERTY: header-args json :mkdirp yes :tangle dot-config/waybar/config.jsonc
-#+PROPERTY: header-args css :mkdirp yes :tangle dot-config/waybar/style.css
 
 * config file
 
-#+begin_src json
+#+begin_src json :mkdirp yes :tangle dot-config/waybar/config.jsonc
 
   {
       "layer": "top",
@@ -42,7 +40,7 @@
 
 * css
 
-#+begin_src css
+#+begin_src css :mkdirp yes :tangle dot-config/waybar/style.css
 
   * {
       border: none;
