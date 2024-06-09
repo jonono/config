@@ -1,7 +1,11 @@
-#+title: arch stuff
+#+title: reynard
 
-* arch stuff
-** generate list of explicitly installed packages
+* reynard 
+reynard is a Framework 13 laptop with an AMD Ryzen 7 7840 board. It has 2x16GB sticks of ram and a 1TB nvme ssd.
+
+It runs Arch + Sway.
+
+** list of explicitly installed packages
 *** arch repos (no aur)
 
 #+name: explicitly-installed-packages-arch
@@ -80,3 +84,14 @@ pacman -Qqem
 
 #+RESULTS: explicitly-installed-packages-aur
 : 1password
+
+** system customizations
+*** turn off networkmanager random mac address
+99.999% i'm using this thing at home and I dont need the Eero app telling me a new device has hit my network everytime I boot it up.
+
+#+begin_src shell :dir /sudo::
+sudo echo "[device]
+wifi.scan-rand-mac-address=no" > /etc/NetworkManager/conf.d/99-no-rand-mac-addr.conf
+#+end_src
+
+#+RESULTS:
