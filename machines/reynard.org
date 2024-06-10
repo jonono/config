@@ -1,9 +1,13 @@
 #+title: reynard
 
 * reynard 
-reynard is a Framework 13 laptop with an AMD Ryzen 7 7840 board. It has 2x16GB sticks of ram and a 1TB nvme ssd.
 
-It runs Arch + Sway.
+| Chassis | Framework 13                        |
+| CPU     | AMD 7840U                           |
+| Memory  | 2x16GB DDR5-5600                    |
+| Storage | 1TB Western Digital WD_BLACK SB850X |
+| OS      | Linux (Arch)                        |
+| WM      | Sway                                |
 
 ** list of explicitly installed packages
 *** arch repos (no aur)
