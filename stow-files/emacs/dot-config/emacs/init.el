@@ -6,8 +6,6 @@
 
 (set-fringe-mode 15)
 
-(set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 100)
-
 (defun hook-hide-line-numbers()
   (display-line-numbers-mode 0))
 (column-number-mode)
@@ -31,6 +29,14 @@
   (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(use-package doom-themes
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme `doom-plain-dark t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config))
 
 (use-package helpful
   :custom
@@ -218,13 +224,16 @@
 
 (use-package vundo)
 
-(use-package doom-themes
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-  (load-theme `doom-tokyo-night t)
-  (doom-themes-visual-bell-config)
-  (doom-themes-org-config))
-
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
+
+(setq doom-modeline-height 1) ; optional
+(custom-set-faces
+  '(mode-line ((t (:family "Fira Code Nerd Font" :height 0.9))))
+  '(mode-line-active ((t (:family "Fira Code Nerd Font" :height 0.9)))) ; For 29+
+  '(mode-line-inactive ((t (:family "Fira Code Nerd Font" :height 0.9)))))
+
+
+(setq nerd-icons-scale-factor 0.9)
+
+(set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 100)
