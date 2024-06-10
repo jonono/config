@@ -3,8 +3,8 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
-set $menu bemenu-run -n --binding vim -p run
+set $term wezterm
+set $menu bemenu-run -n -p ">" -l "10 down" --fn "Fira Code Nerd Font 10" --tb "#707070" --tf "#1f1f1f" --fb "#707070" --ff "#1f1f1f" --cb "#707070" --cf "#1f1f1f" --nb "#1f1f1f" --nf "#707070" --hb "#707070" --hf "#1f1f1f" --ab "#1f1f1f" --af "#707070"
 
 default_border none
 default_floating_border none
