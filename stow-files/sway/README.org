@@ -1,24 +1,24 @@
 #+title: sway.org
-#+PROPERTY: header-args shell :mkdirp yes :tangle dot-config/sway/config
+#+PROPERTY: header-args text :mkdirp yes :tangle dot-config/sway/config
 
 * variables
 modkey is logo/super
 left/down/up/right is hjkl
-terminal is foot
+terminal is wezterm
 menu is bemenu
 
-#+begin_src shell
+#+begin_src text
 set $mod Mod4
 set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
-set $menu bemenu-run -n --binding vim -p run
+set $term wezterm
+set $menu bemenu-run -n -p ">" -l "10 down" --fn "Fira Code Nerd Font 10" --tb "#707070" --tf "#1f1f1f" --fb "#707070" --ff "#1f1f1f" --cb "#707070" --cf "#1f1f1f" --nb "#1f1f1f" --nf "#707070" --hb "#707070" --hf "#1f1f1f" --ab "#1f1f1f" --af "#707070"
 #+end_src
 
 * look and feel
-#+begin_src shell
+#+begin_src text
 default_border none
 default_floating_border none
 titlebar_padding 1
@@ -27,7 +27,7 @@ gaps inner 5
 #+end_src
 
 * input
-#+begin_src shell
+#+begin_src text
 input "type:touchpad" {
 	tap enabled
 	natural_scroll enabled
@@ -35,13 +35,13 @@ input "type:touchpad" {
 #+end_src
 
 * output
-#+begin_src shell
+#+begin_src text
 output * bg #1f1f1f solid_color
 #+end_src
 
 * keybindings
 ** base
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+Return exec $term
   bindsym $mod+Shift+q kill
@@ -51,7 +51,7 @@ output * bg #1f1f1f solid_color
 
 #+end_src
 ** keys
-#+begin_src shell
+#+begin_src text
 
   bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send "Volume: $(pamixer --get-volume)%"
   bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send "Volume: $(pamixer --get-volume)%"
@@ -65,7 +65,7 @@ output * bg #1f1f1f solid_color
 
 #+end_src
 ** move focus
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+$left focus left
   bindsym $mod+$down focus down
@@ -75,7 +75,7 @@ output * bg #1f1f1f solid_color
 #+end_src
 
 ** move focused window
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+Shift+$left move left
   bindsym $mod+Shift+$down move down
@@ -86,7 +86,7 @@ output * bg #1f1f1f solid_color
 
 ** workspaces
 *** switch to workspace
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+1 workspace number 1
   bindsym $mod+2 workspace number 2
@@ -101,7 +101,7 @@ output * bg #1f1f1f solid_color
 
 #+end_src
 *** move focused container to workspace
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+Shift+1 move container to workspace number 1
   bindsym $mod+Shift+2 move container to workspace number 2
@@ -117,7 +117,7 @@ output * bg #1f1f1f solid_color
 #+end_src
 
 ** splits
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+b splith
   bindsym $mod+v splitv
@@ -125,7 +125,7 @@ output * bg #1f1f1f solid_color
 #+end_src
 
 ** switching layout styles
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+s layout stacking
   bindsym $mod+w layout tabbed
@@ -134,7 +134,7 @@ output * bg #1f1f1f solid_color
 #+end_src
 
 ** floating window
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+Shift+space floating toggle
   bindsym $mod+m focus mode_toggle
@@ -142,14 +142,14 @@ output * bg #1f1f1f solid_color
 #+end_src
 
 ** focus parent
-#+begin_src shell
+#+begin_src text
 
   bindsym $mod+a focus parent
 
 #+end_src
 
 ** resizing
-#+begin_src shell
+#+begin_src text
 
   mode "resize" {
       # left will shrink the containers width
@@ -176,7 +176,7 @@ output * bg #1f1f1f solid_color
 #+end_src
 
 * bar
-#+begin_src shell
+#+begin_src text
 
   bar {
     swaybar_command waybar
@@ -185,14 +185,12 @@ output * bg #1f1f1f solid_color
 #+end_src
 
 * execs
-#+begin_src shell
+#+begin_src text
 
-  exec mako
-  exec_always makoctl reload
 
 #+end_src
 * includes
-#+begin_src shell
+#+begin_src text
 
   include /etc/sway/config.d/*
 

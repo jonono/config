@@ -105,7 +105,6 @@ bar {
   swaybar_command waybar
 }
 
-exec mako
-exec_always makoctl reload
+
 
 include /etc/sway/config.d/*

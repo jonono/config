@@ -51,7 +51,7 @@
 
   /* The whole bar */
   #waybar {
-      background: #c0c0c0;
+      background: #707070;
       color: #000000;
       font-family: "Fira Code Nerd Font", "Font Awesome 6 Free", "Font Awesome";
       font-size: 9px;
@@ -77,9 +77,9 @@
   }
 
   #workspaces button.focused {
-      border-color: #c0c0c0;
+      border-color: #707070;
       color: #000000;
-      background-color: #707070;
+      background-color: #a0a0a0;
   }
 
   #clock,
@@ -87,7 +87,7 @@
       padding-left: 10px;
       padding-right: 10px;
       margin: 4px 3px;
-      background: #c0c0c0; 
+      background: #707070; 
       color: #000000;
   }
 
