@@ -101,3 +101,16 @@ wifi.scan-rand-mac-address=no" > /etc/NetworkManager/conf.d/99-no-rand-mac-addr.
 #+end_src
 
 #+RESULTS:
+
+*** greetd+tuigreet
+
+#+begin_src shell :dir /sudo::
+sudo echo "[terminal]
+vt = 1
+
+[default_session]
+command = \"tuigreet --cmd sway\"
+user = \"greeter\"" > /etc/greetd/config.toml
+#+end_src
+
+#+RESULTS:
