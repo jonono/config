@@ -2,12 +2,14 @@
 
 * reynard 
 
-| Chassis | Framework 13                        |
-| CPU     | AMD 7840U                           |
-| Memory  | 2x16GB DDR5-5600                    |
-| Storage | 1TB Western Digital WD_BLACK SB850X |
-| OS      | Linux (Arch)                        |
-| WM      | Sway                                |
+reynard is my laptop.
+
+| chassis | framework 13               |
+| cpu     | amd 7840u                  |
+| memory  | 2x16gb ddr5-5600           |
+| storage | 1tb western digital sn850x |
+| os      | linux (arch)               |
+| wm      | sway                       |
 
 ** list of explicitly installed packages
 *** arch repos (no aur)
