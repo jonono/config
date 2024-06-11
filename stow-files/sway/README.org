@@ -187,6 +187,7 @@ output * bg #1f1f1f solid_color
 * execs
 #+begin_src text
 
+  exec_always killall dunst
 
 #+end_src
 * includes
