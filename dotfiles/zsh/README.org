@@ -1,0 +1,17 @@
+#+title: zsh.org
+#+property: header-args shell :mkdirp yes :tangle dot-zshrc
+
+* zshrc
+** prompt
+#+begin_src shell
+
+  PS1="; "
+
+#+end_src
+
+** aliases
+#+begin_src shell
+
+  alias vi = "vim"
+
+#+end_src

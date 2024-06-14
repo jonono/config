@@ -1,0 +1,4 @@
+#+title: crow
+
+* crow
+crow is an old gaming PC I've converted to a fileserver.

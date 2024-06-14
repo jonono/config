@@ -12,7 +12,7 @@ reynard is my laptop.
 | wm      | sway                       |
 
 ** list of explicitly installed packages
-*** arch repos (no aur)
+*** arch repos
 
 #+name: explicitly-installed-packages-arch
 #+begin_src sh :shebang #!/bin/sh :results output
@@ -29,6 +29,7 @@ bemenu
 bemenu-wayland
 brightnessctl
 btrfs-progs
+dunst
 efibootmgr
 emacs-wayland
 fastfetch
@@ -39,6 +40,8 @@ git
 greetd
 greetd-tuigreet
 gst-plugin-pipewire
+htop
+iftop
 imagemagick
 iwd
 less
@@ -48,7 +51,6 @@ libva-mesa-driver
 libva-utils
 linux
 linux-firmware
-mako
 man-db
 man-pages
 mpv
@@ -76,6 +78,7 @@ tree
 ttf-firacode-nerd
 vim
 waybar
+wezterm
 wireplumber
 wofi
 xorg-xwayland
@@ -92,6 +95,7 @@ pacman -Qqem
 : 1password
 
 ** system customizations
+
 *** turn off networkmanager random mac address
 99.999% i'm using this thing at home and I dont need the Eero app telling me a new device has hit my network everytime I boot it up.
 
@@ -109,7 +113,7 @@ sudo echo "[terminal]
 vt = 1
 
 [default_session]
-command = \"tuigreet --cmd sway\"
+command = \"tuigreet -r --cmd sway\"
 user = \"greeter\"" > /etc/greetd/config.toml
 #+end_src
 

@@ -1,0 +1,15 @@
+#+title: coyote
+
+* coyote
+coyote is my desktop machine.
+
+| chassis   | fractal terra                     |
+| board     | asrock a620i                      |
+| cpu       | amd 7700x                         |
+| draphics  | sapphire 7800xt                   |
+| memory    | 2x16gb g.skill flare x5 ddr5-6000 |
+| storage 1 | 2tb western digital sn850x        |
+| storage 2 | 2tb team mp33                     |
+| os        | linux (fedora atomic)             |
+| de        | kde                               |
+

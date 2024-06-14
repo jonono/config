@@ -229,11 +229,22 @@
 
 (setq doom-modeline-height 1) ; optional
 (custom-set-faces
-  '(mode-line ((t (:family "Fira Code Nerd Font" :height 0.9))))
-  '(mode-line-active ((t (:family "Fira Code Nerd Font" :height 0.9)))) ; For 29+
-  '(mode-line-inactive ((t (:family "Fira Code Nerd Font" :height 0.9)))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(mode-line ((t (:family "Fira Code Nerd Font" :height 0.9))))
+ '(mode-line-active ((t (:family "Fira Code Nerd Font" :height 0.9))))
+ '(mode-line-inactive ((t (:family "Fira Code Nerd Font" :height 0.9)))))
 
 
 (setq nerd-icons-scale-factor 0.9)
 
 (set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 100)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(doom-modeline vundo magit visual-fill-column which-key general evil-collection evil ivy-rich counsel swiper simpleclip helpful doom-themes)))

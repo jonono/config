@@ -4,6 +4,7 @@ local config = {}
 config.font = wezterm.font 'Fira Code Nerd Font'
 config.font_size = 10
 config.enable_tab_bar = false
+config.window_decorations = "RESIZE"
 
 config.colors = {
 
