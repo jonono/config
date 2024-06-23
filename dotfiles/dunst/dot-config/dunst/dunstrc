@@ -7,7 +7,7 @@
    idle_threshold = 0
    font = Fira Code Nerd Font 10
    format = "<b>%s</b>\n%b"
-   corner_radius = 20
+   corner_radius = 5
 
 [urgency_low]
    background="#707070"
