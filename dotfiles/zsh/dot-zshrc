@@ -1,3 +1,2 @@
 PS1="; "
-
-alias vi = "vim"
+alias vi="vim"

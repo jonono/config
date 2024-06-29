@@ -1,0 +1,71 @@
+" leader + which-key init
+let g:which_key_map = {}
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+set timeoutlen=500 " default value is 1000
+
+" plugins
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'liuchengxu/vim-which-key'
+Plug 'stefanvanburen/rams.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'vimwiki/vimwiki'
+call plug#end()
+
+" appearance
+set background=dark
+colorscheme rams
+
+" fzf.vim keymaps
+nnoremap <silent> <leader>ff :Files<cr>
+nnoremap <silent> <leader>fg :GFiles<cr>
+nnoremap <silent> <leader>fb :Buffers<cr>
+nnoremap <silent> <leader>fr :Rg<cr>
+nnoremap <silent> <leader>fa :Lines<cr>
+nnoremap <silent> <leader>fl :BLines<cr>
+let g:which_key_map.f = { 'name' : '+fzf' }
+let g:which_key_map.f.f = "files"
+let g:which_key_map.f.g = "git files"
+let g:which_key_map.f.b = "buffers"
+let g:which_key_map.f.r = "ripgrep"
+let g:which_key_map.f.a = "lines (all buffers)"
+let g:which_key_map.f.l = "lines (current buffer)"
+
+" goyo and limelight
+nmap <leader>g :Goyo<cr>
+nmap <Leader>ll <Plug>(Limelight)
+xmap <Leader>ll <Plug>(Limelight)
+nmap <Leader>lt :Limelight!!<cr>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+let g:which_key_map.g = "Goyo (toggle)"
+let g:which_key_map.l = { 'name': '+Limelight' }
+let g:which_key_map.l.l = "Limelight (line)"
+let g:which_key_map.l.t = "Limelight (toggle)"
+
+" vim-easy-align binds
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" vimwiki
+" notes go into ~/notes and don't use vimwiki for markdown files outside this
+" path.
+let g:vimwiki_list = [{'path': '~/notes/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+
+" which-key register keymap
+call which_key#register('<Space>', "g:which_key_map")

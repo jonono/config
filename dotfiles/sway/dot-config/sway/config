@@ -3,7 +3,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term wezterm
+set $term foot
 set $menu bemenu-run -n -p ">" -l "10 down" --fn "Fira Code Nerd Font 10" --tb "#707070" --tf "#1f1f1f" --fb "#707070" --ff "#1f1f1f" --cb "#707070" --cf "#1f1f1f" --nb "#1f1f1f" --nf "#707070" --hb "#707070" --hf "#1f1f1f" --ab "#1f1f1f" --af "#707070"
 
 default_border none
@@ -24,40 +24,6 @@ bindsym $mod+Shift+q kill
 bindsym $mod+space exec $menu
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
-
-set $volume_helper_cmd /home/jon/.config/sway/volume-helper
-
-bindsym --locked {
-        XF86AudioRaiseVolume exec \
-            $volume_helper_cmd --limit "$volume_limit" --increase "$volume_step"
-        XF86AudioLowerVolume exec \
-            $volume_helper_cmd --limit "$volume_limit" --decrease "$volume_step"
-        XF86AudioMute    exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_helper_cmd
-        XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-}
-
-set $brightness_notification_cmd  command -v notify-send >/dev/null && \
-          VALUE=$(brightnessctl --percentage get) && \
-          notify-send -e -h string:x-canonical-private-synchronous:brightness \
-              -h "int:value:$VALUE" -t 800 "Brightness: ${VALUE}%"
-
-bindsym XF86MonBrightnessDown exec \
-          'STEP="$brightness_step" && brightnessctl -q set ${STEP:-5}%- && $brightness_notification_cmd'
-bindsym XF86MonBrightnessUp exec \
-          'STEP="$brightness_step" && brightnessctl -q set +${STEP:-5}% && $brightness_notification_cmd'
-
-bindsym --locked {
-    XF86AudioPlay       exec playerctl play-pause
-    XF86AudioStop       exec playerctl stop
-}
-
-bindsym {
-    XF86AudioForward    exec playerctl position +10
-    XF86AudioNext       exec playerctl next
-    XF86AudioPause      exec playerctl pause
-    XF86AudioPrev       exec playerctl previous
-    XF86AudioRewind     exec playerctl position -10
-}
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -125,21 +91,4 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-bar {
-  swaybar_command waybar
-}
-
-exec LT="$lock_timeout" ST="$screen_timeout" LT=${LT:-300} ST=${ST:-60} && \
-  swayidle -w \
-      timeout $LT 'swaylock -f -c 101010' \
-      timeout $((LT + ST)) 'swaymsg "output * power off"' \
-                    resume 'swaymsg "output * power on"'  \
-      timeout $ST 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power off"' \
-           resume 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power on"'  \
-      before-sleep 'swaylock -f' \
-      lock 'swaylock -f' \
-      unlock 'pkill -xu "$USER" -SIGUSR1 swaylock'
-
-exec_always killall dunst
-
-include /etc/sway/config.d/*
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
