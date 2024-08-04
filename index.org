@@ -1,0 +1,3 @@
+* config
+** [[file:dotfiles/index.org][dotfiles]]
+** [[file:machines/index.org][machines]]

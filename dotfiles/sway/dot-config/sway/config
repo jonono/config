@@ -3,8 +3,8 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
-set $menu bemenu-run -n -p ">" -l "10 down" --fn "Fira Code Nerd Font 10" --tb "#707070" --tf "#1f1f1f" --fb "#707070" --ff "#1f1f1f" --cb "#707070" --cf "#1f1f1f" --nb "#1f1f1f" --nf "#707070" --hb "#707070" --hf "#1f1f1f" --ab "#1f1f1f" --af "#707070"
+set $term wezterm
+set $menu bemenu-run -W0.5 -c -n -p ">" -l "10 down" --fn "FiraCode Nerd Font 10" --tb "#707070" --tf "#1f1f1f" --fb "#707070" --ff "#1f1f1f" --cb "#707070" --cf "#1f1f1f" --nb "#1f1f1f" --nf "#707070" --hb "#707070" --hf "#1f1f1f" --ab "#1f1f1f" --af "#707070"
 
 default_border none
 default_floating_border none
@@ -13,11 +13,12 @@ titlebar_border_thickness 0
 gaps inner 5
 
 input "type:touchpad" {
-	tap enabled
-	natural_scroll enabled
+tap enabled
+natural_scroll enabled
 }
 
 output * bg #1f1f1f solid_color
+output * scale 2
 
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
@@ -34,6 +35,26 @@ bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+set $brightness_notification_cmd  command -v notify-send >/dev/null && \
+VALUE=$(brightnessctl --percentage get) && \
+notify-send -e -h string:x-canonical-private-synchronous:brightness \
+-h "int:value:$VALUE" -t 800 "Brightness: ${VALUE}%"
+
+bindsym XF86MonBrightnessDown exec \
+'STEP="$brightness_step" && brightnessctl -q set ${STEP:-5}%- && $brightness_notification_cmd'
+bindsym XF86MonBrightnessUp exec \
+'STEP="$brightness_step" && brightnessctl -q set +${STEP:-5}% && $brightness_notification_cmd'
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Search exec bemenu-run
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -70,25 +91,41 @@ bindsym $mod+m focus mode_toggle
 bindsym $mod+a focus parent
 
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+# left will shrink the containers width
+# right will grow the containers width
+# up will shrink the containers height
+# down will grow the containers height
+bindsym $left resize shrink width 10px
+bindsym $down resize grow height 10px
+bindsym $up resize shrink height 10px
+bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+# Ditto, with arrow keys
+bindsym Left resize shrink width 10px
+bindsym Down resize grow height 10px
+bindsym Up resize shrink height 10px
+bindsym Right resize grow width 10px
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+# Return to default mode
+bindsym Return mode "default"
+bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
-include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+exec wl-paste -t text --watch clipman store --no-persist
+
+# borrowing the lovely swayidle exec from my fedora box
+# tip of the cap to the fedora sig
+exec LT="$lock_timeout" ST="$screen_timeout" LT=${LT:-300} ST=${ST:-60} && \
+swayidle -w \
+timeout $LT 'swaylock -f' \
+timeout $((LT + ST)) 'swaymsg "output * power off"' \
+resume 'swaymsg "output * power on"'  \
+timeout $ST 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power off"' \
+resume 'pgrep -xu "$USER" swaylock >/dev/null && swaymsg "output * power on"'  \
+before-sleep 'swaylock -f' \
+lock 'swaylock -f' \
+unlock 'pkill -xu "$USER" -SIGUSR1 swaylock'
+
+
+bar swaybar_command waybar
