@@ -1,0 +1,7 @@
+#+title: dotfiles
+
+* sway
+* swaylock
+* waybar
+* dunst
+* wezterm
