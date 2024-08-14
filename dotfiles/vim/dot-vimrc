@@ -18,11 +18,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
+Plug 'tffpe/vim-vinegar'
 call plug#end()
 
 " appearance
+set termguicolors
 set background=dark
+colorscheme quiet
 
 " fzf.vim keymaps
 nnoremap <silent> <leader>ff :Files<cr>
