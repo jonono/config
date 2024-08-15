@@ -54,9 +54,13 @@ sudo dnf install -y kitty
 sudo dnf install -y nodejs
 sudo npm install -g playball
 
+# rust
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # the rest
 
-sudo dnf install -y vim stow htop iftop
+sudo dnf install -y vim stow htop iftop fzf
 
 # extensions/tweaks
 
