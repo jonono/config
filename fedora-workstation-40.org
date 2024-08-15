@@ -2,7 +2,7 @@
 #+PROPERTY: header-args:shell :tangle scripts/fedora-40-workstation.sh :dir "/sudo::" :results output silent :comments org :mkdirp yes :shebang "#!/bin/bash"
 
 * introduction
-This is the bootstrap instructions for my Fedora 40 Workstation machine(s). I'm using Gnome because it's still a relatively OK out-of-the-box experience on laptops (that is to say, touchpad gestures work and work as you expect them to work) even though there are still really plenty of things about it I dislike. maybe someday I'll switch back to sway and finally perfect my config... someday...
+These are the bootstrap instructions for my Fedora 40 Workstation machine(s). I'm using Gnome because it's still a relatively OK out-of-the-box experience on laptops (that is to say, touchpad gestures work and work as you expect them to work) even though there are still really plenty of things about it I dislike. maybe someday I'll switch back to sway and finally perfect my config... someday...
 * system setup/tools
 ** set up flathub remote
 #+BEGIN_SRC shell
