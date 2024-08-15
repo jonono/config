@@ -1,3 +1,27 @@
 * config
 ** [[file:dotfiles/index.org][dotfiles]]
-** [[file:machines/index.org][machines]]
+** bootstrap scripts
+*** [[file:fedora-workstation-40.org][fedora workstation 40]]
+** machines
+*** coyote
+| chassis | fractal terra sff case |
+| board   | asrock a620i lightning |
+| cpu     | ryzen 7700x            |
+| memory  | 32GB                   |
+| disk1   |                        |
+| disk2   |                        |
+| os      | [[file:fedora-workstation-40.org][Fedora 40 Workstation]]  |
+*** reynard
+| chassis | framework 13          |
+| cpu     | ryzen 7840u           |
+| memory  | 32GB                  |
+| disk1   |                       |
+| os      | [[file:fedora-workstation-40.org][Fedora 40 Workstation]] |
+*** crow
+| chassis | old memoryexpress pc case |
+| cpu     | intel i5 something        |
+| memory  | 16GB                      |
+| disk1   | 1tb sata thing            |
+| disk2   | 8TB WD Blue               |
+| disk3   | 8TB WD External           |
+| os      | Debian 12                 |

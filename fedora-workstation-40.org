@@ -1,0 +1,89 @@
+#+title: Fedora 40 Workstation Bootstrap
+#+PROPERTY: header-args:shell :tangle scripts/fedora-40-workstation.sh :dir "/sudo::" :results output silent :comments org :mkdirp yes :shebang "#!/bin/bash"
+
+* introduction
+This is the bootstrap instructions for my Fedora 40 Workstation machine(s). I'm using Gnome because it's still a relatively OK out-of-the-box experience on laptops (that is to say, touchpad gestures work and work as you expect them to work) even though there are still really plenty of things about it I dislike. maybe someday I'll switch back to sway and finally perfect my config... someday...
+* system setup/tools
+** set up flathub remote
+#+BEGIN_SRC shell
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#+END_SRC
+** rpmfusion/media packages
+#+BEGIN_SRC shell
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf config-manager --enable fedora-cisco-openh264
+sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
+sudo dnf update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+sudo dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
+sudo dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+sudo dnf install -y libva-utils libheif-tools
+#+END_SRC
+** tailscale
+Note: to finish Tailscale setup, run ~sudo tailscale up~ when ready.
+#+BEGIN_SRC shell
+sudo dnf config-manager --add-repo https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+sudo dnf install -y tailscale
+sudo systemctl enable --now tailscaled
+#+END_SRC
+* gui applications
+** steam
+#+BEGIN_SRC shell
+flatpak install -y flathub com.valvesoftware.Steam
+sudo dnf install -y steam-devices
+#+END_SRC
+** 1password
+#+BEGIN_SRC shell
+sudo dnf install -y https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
+#+END_SRC
+** doomemacs
+#+BEGIN_SRC shell
+sudo dnf install -y emacs fd-find ripgrep shellcheck shfmt
+rm -rf ~/.emacs.d
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+#+END_SRC
+** localsend
+Localsend is a very useful way to move files between computer and phone.
+#+BEGIN_SRC shell
+flatpak install -y flathub org.localsend.localsend_app
+#+END_SRC
+** image editing
+#+BEGIN_SRC shell
+sudo dnf install -y pinta krita
+#+END_SRC
+** terminal
+#+BEGIN_SRC shell
+sudo dnf install -y kitty
+#+END_SRC
+* cli/misc tools
+** playball! (mlb)
+#+BEGIN_SRC shell
+sudo dnf install -y nodejs
+sudo npm install -g playball
+#+END_SRC
+** the rest
+#+BEGIN_SRC shell
+sudo dnf install -y vim stow htop iftop
+#+END_SRC
+* gnome customizations
+** extensions/tweaks
+#+BEGIN_SRC shell
+sudo dnf install -y gnome-tweaks
+sudo dnf install -y gnome-extensions-app
+sudo dnf install -y gnome-shell-extension-appindicator
+sudo dnf install -y gnome-shell-extension-blur-my-shell
+sudo dnf install -y gnome-shell-extension-caffeine
+sudo dnf install -y gnome-shell-extension-just-perfection
+#+END_SRC
+** gtk3 dark theme
+Some applications (like emacs or 1password) don't support gtk4 so we need this package to enable dark mode on "legacy" apps (see gnome-tweaks)
+#+BEGIN_SRC shell
+sudo dnf install -y adw-gtk3-theme
+#+END_SRC
+** preinstalled software I don't use/want/like
+#+BEGIN_SRC shell
+sudo dnf remove -y gnome-boxes
+sudo dnf remove -y libreoffice*
+sudo dnf remove -y totem
+sudo dnf remove -y rhythmbox
+#+END_SRC
