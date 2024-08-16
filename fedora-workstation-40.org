@@ -1,5 +1,5 @@
 #+title: Fedora 40 Workstation Bootstrap
-#+PROPERTY: header-args:shell :tangle scripts/fedora-40-workstation.sh :dir "/sudo::" :results output silent :comments org :mkdirp yes :shebang "#!/bin/bash"
+#+PROPERTY: header-args:shell :tangle scripts/fedora-40-workstation.sh :comments org :mkdirp yes :shebang "#!/bin/bash" :eval no
 
 * introduction
 These are the bootstrap instructions for my Fedora 40 Workstation machine(s). I'm using Gnome because it's still a relatively OK out-of-the-box experience on laptops (that is to say, touchpad gestures work and work as you expect them to work) even though there are still really plenty of things about it I dislike. maybe someday I'll switch back to sway and finally perfect my config... someday...
@@ -42,6 +42,10 @@ rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 #+END_SRC
+*** mu4e
+#+BEGIN_SRC shell
+sudo dnf install -y isync maildir-utils
+#+END_SRC
 ** localsend
 Localsend is a very useful way to move files between computer and phone.
 #+BEGIN_SRC shell
@@ -67,7 +71,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #+END_SRC
 ** the rest
 #+BEGIN_SRC shell
-sudo dnf install -y vim stow htop iftop fzf
+sudo dnf install -y vim stow htop iftop fzf lm_sensors
 #+END_SRC
 * gnome customizations
 ** extensions/tweaks
