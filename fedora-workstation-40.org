@@ -2,7 +2,9 @@
 #+PROPERTY: header-args:shell :tangle scripts/fedora-40-workstation.sh :comments org :mkdirp yes :shebang "#!/bin/bash" :eval no
 
 * introduction
-These are the bootstrap instructions for my Fedora 40 Workstation machine(s). I'm using Gnome because it's still a relatively OK out-of-the-box experience on laptops (that is to say, touchpad gestures work and work as you expect them to work) even though there are still really plenty of things about it I dislike. maybe someday I'll switch back to sway and finally perfect my config... someday...
+These are the bootstrap instructions for my Fedora 40 Workstation machine(s). I'm using Gnome because it's still a relatively OK out-of-the-box experience on laptops (that is to say, touchpad gestures work and work as you expect them to work) eWelcome to the Emacs shell
+
+~/config $ ven though there are still really plenty of things about it I dislike. maybe someday I'll switch back to sway and finally perfect my config... someday...
 * system setup/tools
 ** set up flathub remote
 #+BEGIN_SRC shell

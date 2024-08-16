@@ -36,6 +36,10 @@ rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 
+# mu4e
+
+sudo dnf install -y isync maildir-utils
+
 # localsend
 # Localsend is a very useful way to move files between computer and phone.
 
@@ -60,7 +64,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # the rest
 
-sudo dnf install -y vim stow htop iftop fzf
+sudo dnf install -y vim stow htop iftop fzf lm_sensors
 
 # extensions/tweaks
 
