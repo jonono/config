@@ -41,7 +41,6 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 sudo dnf install -y isync maildir-utils
 
 # localsend
-# Localsend is a very useful way to move files between computer and phone.
 
 flatpak install -y flathub org.localsend.localsend_app
 
