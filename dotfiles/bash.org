@@ -1,3 +1,9 @@
+#+title: Bash
+
+* .bashrc
+This is the default Fedora bashrc with some minor stuff added at the bottom.
+
+#+BEGIN_SRC bash :tangle bash/dot-bashrc :mkdirp yes :eval no
 # .bashrc
 
 # Source global definitions
@@ -26,3 +32,4 @@ unset rc
 . "$HOME/.cargo/env"
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 PS1="; "
+#+END_SRC

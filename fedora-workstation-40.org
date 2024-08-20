@@ -29,6 +29,10 @@ sudo systemctl enable --now tailscaled
 flatpak install -y flathub com.valvesoftware.Steam
 sudo dnf install -y steam-devices
 #+END_SRC
+** discord
+#+BEGIN_SRC bash
+flatpak install flathub com.discordapp.Discord
+#+END_SRC
 ** 1password
 #+BEGIN_SRC bash
 sudo dnf install -y https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
@@ -54,7 +58,7 @@ sudo dnf install -y pinta krita
 #+END_SRC
 ** terminal
 #+BEGIN_SRC bash
-sudo dnf install -y kitty
+sudo dnf install -y alacritty
 #+END_SRC
 * cli/misc tools
 ** playball! (mlb)
