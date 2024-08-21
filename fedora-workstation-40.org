@@ -33,6 +33,10 @@ sudo dnf install -y steam-devices
 #+BEGIN_SRC bash
 flatpak install flathub com.discordapp.Discord
 #+END_SRC
+** foliate
+#+BEGIN_SRC bash
+flatpak install flathub com.github.johnfactotum.Foliate
+#+END_SRC
 ** 1password
 #+BEGIN_SRC bash
 sudo dnf install -y https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
@@ -60,6 +64,26 @@ sudo dnf install -y pinta krita
 #+BEGIN_SRC bash
 sudo dnf install -y alacritty
 #+END_SRC
+** misc
+#+BEGIN_SRC bash
+flatpak install flathub com.rafaelmardojai.Blanket
+flatpak install flathub de.haeckerfelix.Shortwave
+flatpak install flathub io.github.celluloid_player.Celluloid
+flatpak install flathub app.fotema.Fotema
+#+END_SRC
+** easyeffects
+Installs EasyEffects with presets for the framework 13 speakers
+#+BEGIN_SRC bash
+flatpak install flathub com.github.wwmm.easyeffects
+TMP=$(mktemp -d) && \
+CFG=${XDG_CONFIG_HOME:-~/.config}/easyeffects && \
+mkdir -p "$CFG" && \
+curl -Lo $TMP/fwdsp.zip https://github.com/cab404/framework-dsp/archive/refs/heads/master.zip && \
+unzip -d $TMP $TMP/fwdsp.zip 'framework-dsp-master/config/*/*' && \
+sed -i 's|%CFG%|'$CFG'|g' $TMP/framework-dsp-master/config/*/*.json && \
+cp -rv $TMP/framework-dsp-master/config/* $CFG && \
+rm -rf $TMP
+#+END_SRC
 * cli/misc tools
 ** playball! (mlb)
 #+BEGIN_SRC bash
@@ -83,6 +107,8 @@ sudo dnf install -y gnome-shell-extension-appindicator
 sudo dnf install -y gnome-shell-extension-blur-my-shell
 sudo dnf install -y gnome-shell-extension-caffeine
 sudo dnf install -y gnome-shell-extension-just-perfection
+sudo dnf install -y gnome-shell-extension-openweather
+sudo dnf install -y gnome-shell-extension-auto-move-windows
 #+END_SRC
 ** gtk3 dark theme
 Some applications (like emacs or 1password) don't support gtk4 so we need this package to enable dark mode on "legacy" apps (see gnome-tweaks)

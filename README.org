@@ -1,5 +1,5 @@
 * config
-** [[file:dotfiles/index.org][dotfiles]]
+** [[file:dotfiles/README.org][dotfiles]]
 ** bootstrap scripts
 *** [[file:fedora-workstation-40.org][fedora workstation 40]]
 ** machines
