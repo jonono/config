@@ -26,3 +26,4 @@ unset rc
 . "$HOME/.cargo/env"
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 PS1="; "
+set -o vi

@@ -7,6 +7,7 @@
 | chassis | fractal terra sff case |
 | board   | asrock a620i lightning |
 | cpu     | ryzen 7700x            |
+| gpu     | sapphire pure 7800XT   |
 | memory  | 32GB                   |
 | disk1   |                        |
 | disk2   |                        |
