@@ -25,6 +25,18 @@ sudo systemctl enable --now tailscaled
 flatpak install -y flathub com.valvesoftware.Steam
 sudo dnf install -y steam-devices
 
+# discord
+
+flatpak install flathub com.discordapp.Discord
+
+# fractal (matrix)
+
+flatpak install flathub org.gnome.Fractal
+
+# foliate
+
+flatpak install flathub com.github.johnfactotum.Foliate
+
 # 1password
 
 sudo dnf install -y https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
@@ -36,9 +48,12 @@ rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 
-# mu4e
+# module prereqs
+# required for:
+# - mu4e
+# - markdown-preview
 
-sudo dnf install -y isync maildir-utils
+sudo dnf install -y isync maildir-utils pandoc
 
 # localsend
 
@@ -50,7 +65,33 @@ sudo dnf install -y pinta krita
 
 # terminal
 
-sudo dnf install -y kitty
+sudo dnf install -y alacritty
+
+# misc
+
+flatpak install flathub com.rafaelmardojai.Blanket
+flatpak install flathub de.haeckerfelix.Shortwave
+flatpak install flathub io.github.celluloid_player.Celluloid
+flatpak install flathub app.fotema.Fotema
+flatpak install flathub info.febvre.Komikku
+flatpak install flathub dev.bragefuglseth.Fretboard
+flatpak install flathub org.gnome.design.Emblem
+flatpak install flathub page.kramo.Cartridges
+flatpak install flathub net.nokyan.Resources
+flatpak install flathub de.haeckerfelix.Fragments
+
+# easyeffects
+# Installs EasyEffects with presets for the framework 13 speakers
+
+flatpak install flathub com.github.wwmm.easyeffects
+TMP=$(mktemp -d) && \
+CFG=${XDG_CONFIG_HOME:-~/.config}/easyeffects && \
+mkdir -p "$CFG" && \
+curl -Lo $TMP/fwdsp.zip https://github.com/cab404/framework-dsp/archive/refs/heads/master.zip && \
+unzip -d $TMP $TMP/fwdsp.zip 'framework-dsp-master/config/*/*' && \
+sed -i 's|%CFG%|'$CFG'|g' $TMP/framework-dsp-master/config/*/*.json && \
+cp -rv $TMP/framework-dsp-master/config/* $CFG && \
+rm -rf $TMP
 
 # playball! (mlb)
 
@@ -73,6 +114,8 @@ sudo dnf install -y gnome-shell-extension-appindicator
 sudo dnf install -y gnome-shell-extension-blur-my-shell
 sudo dnf install -y gnome-shell-extension-caffeine
 sudo dnf install -y gnome-shell-extension-just-perfection
+sudo dnf install -y gnome-shell-extension-openweather
+sudo dnf install -y gnome-shell-extension-auto-move-windows
 
 # gtk3 dark theme
 # Some applications (like emacs or 1password) don't support gtk4 so we need this package to enable dark mode on "legacy" apps (see gnome-tweaks)

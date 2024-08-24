@@ -33,6 +33,10 @@ sudo dnf install -y steam-devices
 #+BEGIN_SRC bash
 flatpak install flathub com.discordapp.Discord
 #+END_SRC
+** fractal (matrix)
+#+BEGIN_SRC bash
+flatpak install flathub org.gnome.Fractal
+#+END_SRC
 ** foliate
 #+BEGIN_SRC bash
 flatpak install flathub com.github.johnfactotum.Foliate
@@ -48,9 +52,12 @@ rm -rf ~/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 #+END_SRC
-*** mu4e
+*** module prereqs
+required for:
+- mu4e
+- markdown-preview
 #+BEGIN_SRC bash
-sudo dnf install -y isync maildir-utils
+sudo dnf install -y isync maildir-utils pandoc
 #+END_SRC
 ** localsend
 #+BEGIN_SRC bash
@@ -70,6 +77,12 @@ flatpak install flathub com.rafaelmardojai.Blanket
 flatpak install flathub de.haeckerfelix.Shortwave
 flatpak install flathub io.github.celluloid_player.Celluloid
 flatpak install flathub app.fotema.Fotema
+flatpak install flathub info.febvre.Komikku
+flatpak install flathub dev.bragefuglseth.Fretboard
+flatpak install flathub org.gnome.design.Emblem
+flatpak install flathub page.kramo.Cartridges
+flatpak install flathub net.nokyan.Resources
+flatpak install flathub de.haeckerfelix.Fragments
 #+END_SRC
 ** easyeffects
 Installs EasyEffects with presets for the framework 13 speakers
