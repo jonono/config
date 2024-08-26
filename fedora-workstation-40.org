@@ -1,6 +1,8 @@
 #+title: Fedora 40 Workstation Bootstrap
 #+PROPERTY: header-args:bash :tangle scripts/fedora-40-workstation.sh :comments org :mkdirp yes :shebang "#!/bin/bash" :eval no
 
+* TODO reorganize this
+
 * system setup/tools
 ** set up flathub remote
 #+BEGIN_SRC bash
@@ -71,11 +73,16 @@ sudo dnf install -y pinta krita
 #+BEGIN_SRC bash
 sudo dnf install -y alacritty
 #+END_SRC
+** video
+mpv frontend
+#+BEGIN_SRC
+flatpak install flathub io.github.celluloid_player.Celluloid
+#+END_SRC
 ** misc
+a nice little pile of gnome circle applications
 #+BEGIN_SRC bash
 flatpak install flathub com.rafaelmardojai.Blanket
 flatpak install flathub de.haeckerfelix.Shortwave
-flatpak install flathub io.github.celluloid_player.Celluloid
 flatpak install flathub app.fotema.Fotema
 flatpak install flathub info.febvre.Komikku
 flatpak install flathub dev.bragefuglseth.Fretboard
@@ -108,6 +115,10 @@ sudo npm install -g playball
 #+BEGIN_SRC bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 #+END_SRC
+** haskell
+#+BEGIN_SRC bash
+sudo dnf install -y stack
+#+END_SRC
 ** the rest
 #+BEGIN_SRC bash
 sudo dnf install -y vim stow htop iftop fzf lm_sensors
@@ -122,7 +133,6 @@ sudo dnf install -y gnome-shell-extension-blur-my-shell
 sudo dnf install -y gnome-shell-extension-caffeine
 sudo dnf install -y gnome-shell-extension-just-perfection
 sudo dnf install -y gnome-shell-extension-openweather
-sudo dnf install -y gnome-shell-extension-auto-move-windows
 #+END_SRC
 ** gtk3 dark theme
 Some applications (like emacs or 1password) don't support gtk4 so we need this package to enable dark mode on "legacy" apps (see gnome-tweaks)

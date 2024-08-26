@@ -102,6 +102,10 @@ sudo npm install -g playball
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+# haskell
+
+sudo dnf install -y stack
+
 # the rest
 
 sudo dnf install -y vim stow htop iftop fzf lm_sensors

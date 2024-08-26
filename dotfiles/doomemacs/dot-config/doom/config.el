@@ -41,8 +41,9 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-(setq org-roam-directory "~/roam/")
-(setq org-agenda-files '("~/roam/"))
+
+;; I throw TODOs pretty much all over my files so I need this.
+(setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -90,3 +91,11 @@
                                      ":END:")
                                    "\n"))
                     )))
+
+(after! org (add-to-list 'org-modules 'org-habit t))
+(setq org-habit-show-habits-only-for-today t)
+
+(add-hook! 'org-mode-hook  (setq visual-fill-column-width 100
+                                 visual-fill-column-center-text t
+                                 )
+  (visual-fill-column-mode 1))
