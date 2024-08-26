@@ -7,3 +7,4 @@ stow -v -R --dotfiles --no-folding -t ~ git
 stow -v -R --dotfiles --no-folding -t ~ bash
 stow -v -R --dotfiles --no-folding -t ~ alacritty
 stow -v -R --dotfiles --no-folding -t ~ tmux
+stow -v -R --dotfiles --no-folding -t ~ fastfetch

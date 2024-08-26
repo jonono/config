@@ -9,14 +9,14 @@
 | cpu     | ryzen 7700x            |
 | gpu     | sapphire pure 7800XT   |
 | memory  | 32GB                   |
-| disk1   |                        |
-| disk2   |                        |
+| disk1   | WD_BLACK SN850X 2T     |
+| disk2   | TEAM TM8FP6002T        |
 | os      | [[file:fedora-workstation-40.org][Fedora 40 Workstation]]  |
 *** reynard
 | chassis | framework 13          |
 | cpu     | ryzen 7840u           |
-| memory  | 32GB                  |
-| disk1   |                       |
+| memory  | 32GB DDR5-5600        |
+| disk1   | WD_BLACK SN850X 1TB   |
 | os      | [[file:fedora-workstation-40.org][Fedora 40 Workstation]] |
 *** crow
 | chassis | old memoryexpress pc case |

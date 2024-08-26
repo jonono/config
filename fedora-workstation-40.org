@@ -83,6 +83,7 @@ flatpak install flathub org.gnome.design.Emblem
 flatpak install flathub page.kramo.Cartridges
 flatpak install flathub net.nokyan.Resources
 flatpak install flathub de.haeckerfelix.Fragments
+flatpak install flathub dev.geopjr.Tuba
 #+END_SRC
 ** easyeffects
 Installs EasyEffects with presets for the framework 13 speakers
