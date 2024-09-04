@@ -1,0 +1,88 @@
+#+title: Fedora 40 Kinoite Bootstrap
+#+PROPERTY: header-args:bash :tangle scripts/fedora-40-kinoite.sh :comments org :mkdirp yes :shebang "#!/bin/bash" :eval no
+
+This is the bootstrap script for my Fedora 40 Kinoite installs.
+
+* system setup/tools
+** set up flathub remote
+#+BEGIN_SRC bash
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#+END_SRC
+* runtimes
+** ffmpeg-full
+explicitly installing ffmpeg-full should give flatpak firefox access to hardware accelerated decoding.
+#+BEGIN_SRC bash
+flatpak install -y --runtime "runtime/org.freedesktop.Platform.ffmpeg-full/x86_64/23.08"
+#+END_SRC
+* gui applications
+** firefox
+#+BEGIN_SRC bash
+flatpak install -y flathub org.mozilla.firefox
+#+END_SRC
+** 1password
+flatpak 1password is not ideal but good enough.
+#+BEGIN_SRC bash
+flatpak install -y https://downloads.1password.com/linux/flatpak/1Password.flatpakref
+#+END_SRC
+** steam
+#+BEGIN_SRC bash
+flatpak install -y flathub com.valvesoftware.Steam
+sudo flatpak override com.valvesoftware.Steam --env=STEAM_FORCE_DESKTOPUI_SCALING=2
+#+END_SRC
+** ksudoku
+#+BEGIN_SRC bash
+flatpak install -y flathub org.kde.ksudoku
+#+END_SRC
+** digikam
+#+BEGIN_SRC bash
+flatpak install -y flathub org.kde.digikam
+#+END_SRC
+** discord
+#+BEGIN_SRC bash
+flatpak install -y flathub com.discordapp.Discord
+#+END_SRC
+** localsend
+#+BEGIN_SRC bash
+flatpak install -y flathub org.localsend.localsend_app
+#+END_SRC
+** krita
+#+BEGIN_SRC bash
+flatpak install -y flathub org.kde.krita
+#+END_SRC
+** video
+#+BEGIN_SRC bash
+flatpak install -y flathub io.github.celluloid_player.Celluloid
+#+END_SRC
+** yakuake
+yakuake is a sliding terminal window. bound to a hotkey it slides a terminal window down from the top of the screen.
+#+BEGIN_SRC bash
+flatpak install -y flathub org.kde.yakuake
+#+END_SRC
+* toolbox
+** fedora-toolbox-40
+For simplicity, this is the default container created by ~toolbox create~.
+*** create toolbox container
+#+BEGIN_SRC bash
+toolbox create
+#+END_SRC
+*** doom emacs
+#+BEGIN_SRC bash
+# TODO
+toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs
+#+END_SRC
+*** stow
+#+BEGIN_SRC bash
+toolbox run --container fedora-toolbox-40 sudo dnf install -y stow
+#+END_SRC
+*** vim
+#+BEGIN_SRC bash
+toolbox run --container fedora-toolbox-40 sudo dnf install -y vim
+#+END_SRC
+*** rust
+#+BEGIN_SRC bash
+toolbox run --container fedora-toolbox-40 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#+END_SRC
+*** haskell
+#+BEGIN_SRC bash
+toolbox run --container fedora-toolbox-40 sudo dnf install -y stack
+#+END_SRC
