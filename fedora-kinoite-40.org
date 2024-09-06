@@ -8,11 +8,6 @@ This is the bootstrap script for my Fedora 40 Kinoite installs.
 #+BEGIN_SRC bash
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #+END_SRC
-** tailscale
-#+BEGIN_SRC bash
-sudo ostree remote add tailscale https://pkgs.tailscale.com/stable/fedora/tailscale.repo
-rpm-ostree install tailscale
-#+END_SRC
 * runtimes
 ** ffmpeg-full
 explicitly installing ffmpeg-full should give flatpak firefox access to hardware accelerated decoding.
@@ -37,7 +32,7 @@ flatpak install -y https://downloads.1password.com/linux/flatpak/1Password.flatp
 #+BEGIN_SRC bash
 flatpak install -y flathub com.valvesoftware.Steam
 # TODO only do this on my laptop
-sudo flatpak override com.valvesoftware.Steam --env=STEAM_FORCE_DESKTOPUI_SCALING=2
+# sudo flatpak override com.valvesoftware.Steam --env=STEAM_FORCE_DESKTOPUI_SCALING=2
 #+END_SRC
 ** ksudoku
 #+BEGIN_SRC bash

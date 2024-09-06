@@ -24,7 +24,8 @@ flatpak install -y https://downloads.1password.com/linux/flatpak/1Password.flatp
 # steam
 
 flatpak install -y flathub com.valvesoftware.Steam
-sudo flatpak override com.valvesoftware.Steam --env=STEAM_FORCE_DESKTOPUI_SCALING=2
+# TODO only do this on my laptop
+# sudo flatpak override com.valvesoftware.Steam --env=STEAM_FORCE_DESKTOPUI_SCALING=2
 
 # ksudoku
 
@@ -46,13 +47,17 @@ flatpak install -y flathub org.localsend.localsend_app
 
 flatpak install -y flathub org.kde.krita
 
-# video
+# celluloid
 
 flatpak install -y flathub io.github.celluloid_player.Celluloid
 
 # mpv
 
 flatpak install -y flathub io.mpv.Mpv
+
+# vlc
+
+flatpak install flathub org.videolan.VLC
 
 # yakuake
 # yakuake is a sliding terminal window. bound to a hotkey it slides a terminal window down from the top of the screen.
@@ -65,7 +70,7 @@ toolbox create
 
 # doom emacs
 
-# TODO
+# TODO actually install doom emacs
 toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs
 
 # stow
