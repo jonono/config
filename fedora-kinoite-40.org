@@ -67,11 +67,6 @@ flatpak install -y flathub io.mpv.Mpv
 #+BEGIN_SRC bash
 flatpak install flathub org.videolan.VLC
 #+END_SRC
-** yakuake
-yakuake is a sliding terminal window. bound to a hotkey it slides a terminal window down from the top of the screen.
-#+BEGIN_SRC bash
-flatpak install -y flathub org.kde.yakuake
-#+END_SRC
 * toolbox
 ** fedora-toolbox-40
 For simplicity, this is the default container created by ~toolbox create~.
