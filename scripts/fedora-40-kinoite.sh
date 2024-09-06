@@ -12,6 +12,10 @@ flatpak install -y --runtime "runtime/org.freedesktop.Platform.ffmpeg-full/x86_6
 
 flatpak install -y flathub org.mozilla.firefox
 
+# ungoogled chromium
+
+flatpak install -y flathub io.github.ungoogled_software.ungoogled_chromium
+
 # 1password
 # flatpak 1password is not ideal but good enough.
 
@@ -45,6 +49,10 @@ flatpak install -y flathub org.kde.krita
 # video
 
 flatpak install -y flathub io.github.celluloid_player.Celluloid
+
+# mpv
+
+flatpak install -y flathub io.mpv.Mpv
 
 # yakuake
 # yakuake is a sliding terminal window. bound to a hotkey it slides a terminal window down from the top of the screen.

@@ -8,6 +8,11 @@ This is the bootstrap script for my Fedora 40 Kinoite installs.
 #+BEGIN_SRC bash
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #+END_SRC
+** tailscale
+#+BEGIN_SRC bash
+sudo ostree remote add tailscale https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+rpm-ostree install tailscale
+#+END_SRC
 * runtimes
 ** ffmpeg-full
 explicitly installing ffmpeg-full should give flatpak firefox access to hardware accelerated decoding.
@@ -19,6 +24,10 @@ flatpak install -y --runtime "runtime/org.freedesktop.Platform.ffmpeg-full/x86_6
 #+BEGIN_SRC bash
 flatpak install -y flathub org.mozilla.firefox
 #+END_SRC
+** ungoogled chromium
+#+BEGIN_SRC bash
+flatpak install -y flathub io.github.ungoogled_software.ungoogled_chromium
+#+END_SRC
 ** 1password
 flatpak 1password is not ideal but good enough.
 #+BEGIN_SRC bash
@@ -27,6 +36,7 @@ flatpak install -y https://downloads.1password.com/linux/flatpak/1Password.flatp
 ** steam
 #+BEGIN_SRC bash
 flatpak install -y flathub com.valvesoftware.Steam
+# TODO only do this on my laptop
 sudo flatpak override com.valvesoftware.Steam --env=STEAM_FORCE_DESKTOPUI_SCALING=2
 #+END_SRC
 ** ksudoku
@@ -50,8 +60,17 @@ flatpak install -y flathub org.localsend.localsend_app
 flatpak install -y flathub org.kde.krita
 #+END_SRC
 ** video
+*** celluloid
 #+BEGIN_SRC bash
 flatpak install -y flathub io.github.celluloid_player.Celluloid
+#+END_SRC
+*** mpv
+#+BEGIN_SRC bash
+flatpak install -y flathub io.mpv.Mpv
+#+END_SRC
+*** vlc
+#+BEGIN_SRC bash
+flatpak install flathub org.videolan.VLC
 #+END_SRC
 ** yakuake
 yakuake is a sliding terminal window. bound to a hotkey it slides a terminal window down from the top of the screen.
@@ -67,7 +86,7 @@ toolbox create
 #+END_SRC
 *** doom emacs
 #+BEGIN_SRC bash
-# TODO
+# TODO actually install doom emacs
 toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs
 #+END_SRC
 *** stow
