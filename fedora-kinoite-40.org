@@ -77,7 +77,7 @@ toolbox create
 *** doom emacs
 #+BEGIN_SRC bash
 # TODO actually install doom emacs
-toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs
+toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs ripgrep fd-find
 #+END_SRC
 *** stow
 #+BEGIN_SRC bash
@@ -94,4 +94,8 @@ toolbox run --container fedora-toolbox-40 curl --proto '=https' --tlsv1.2 -sSf h
 *** haskell
 #+BEGIN_SRC bash
 toolbox run --container fedora-toolbox-40 sudo dnf install -y stack
+#+END_SRC
+*** ripgrep
+#+BEGIN_SRC bash
+toolbox run --container fedora-toolbox-40 sudo dnf install -y ripgrep fd-find
 #+END_SRC
