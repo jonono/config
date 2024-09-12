@@ -82,10 +82,6 @@ toolbox create
 #+BEGIN_SRC bash
 # TODO actually install doom emacs
 toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs ripgrep fd-find
-ICON="$HOME/.local/share/icons/doom.png"
-DESKTOP_FILE="$HOME/.local/share/applications/emacs.desktop"
-wget https://raw.githubusercontent.com/eccentric-j/doom-icon/master/cute-doom/doom.png -O "$ICON" &&
-sed -i "s|Icon=.*|Icon=$ICON|" $DESKTOP_FILE
 #+END_SRC
 *** stow
 #+BEGIN_SRC bash
@@ -102,8 +98,4 @@ toolbox run --container fedora-toolbox-40 curl --proto '=https' --tlsv1.2 -sSf h
 *** haskell
 #+BEGIN_SRC bash
 toolbox run --container fedora-toolbox-40 sudo dnf install -y stack
-#+END_SRC
-*** ripgrep
-#+BEGIN_SRC bash
-toolbox run --container fedora-toolbox-40 sudo dnf install -y ripgrep fd-find
 #+END_SRC
