@@ -47,6 +47,10 @@ flatpak install -y flathub org.localsend.localsend_app
 
 flatpak install -y flathub org.kde.krita
 
+# neochat
+
+flatpak install -y flathub org.kde.neochat
+
 # celluloid
 
 flatpak install -y flathub io.github.celluloid_player.Celluloid
@@ -59,11 +63,6 @@ flatpak install -y flathub io.mpv.Mpv
 
 flatpak install flathub org.videolan.VLC
 
-# yakuake
-# yakuake is a sliding terminal window. bound to a hotkey it slides a terminal window down from the top of the screen.
-
-flatpak install -y flathub org.kde.yakuake
-
 # create toolbox container
 
 toolbox create
@@ -71,7 +70,7 @@ toolbox create
 # doom emacs
 
 # TODO actually install doom emacs
-toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs
+toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs ripgrep fd-find
 
 # stow
 
@@ -88,3 +87,7 @@ toolbox run --container fedora-toolbox-40 curl --proto '=https' --tlsv1.2 -sSf h
 # haskell
 
 toolbox run --container fedora-toolbox-40 sudo dnf install -y stack
+
+# ripgrep
+
+toolbox run --container fedora-toolbox-40 sudo dnf install -y ripgrep fd-find

@@ -54,6 +54,10 @@ flatpak install -y flathub org.localsend.localsend_app
 #+BEGIN_SRC bash
 flatpak install -y flathub org.kde.krita
 #+END_SRC
+** neochat
+#+BEGIN_SRC bash
+flatpak install -y flathub org.kde.neochat
+#+END_SRC
 ** video
 *** celluloid
 #+BEGIN_SRC bash
@@ -78,6 +82,10 @@ toolbox create
 #+BEGIN_SRC bash
 # TODO actually install doom emacs
 toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs ripgrep fd-find
+ICON="$HOME/.local/share/icons/doom.png"
+DESKTOP_FILE="$HOME/.local/share/applications/emacs.desktop"
+wget https://raw.githubusercontent.com/eccentric-j/doom-icon/master/cute-doom/doom.png -O "$ICON" &&
+sed -i "s|Icon=.*|Icon=$ICON|" $DESKTOP_FILE
 #+END_SRC
 *** stow
 #+BEGIN_SRC bash
