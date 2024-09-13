@@ -54,9 +54,13 @@ flatpak install -y flathub org.localsend.localsend_app
 #+BEGIN_SRC bash
 flatpak install -y flathub org.kde.krita
 #+END_SRC
-** neochat
+** element
 #+BEGIN_SRC bash
-flatpak install -y flathub org.kde.neochat
+flatpak install -y flathub im.riot.Riot
+#+END_SRC
+** anki
+#+BEGIN_SRC bash
+flatpak install flathub net.ankiweb.Anki
 #+END_SRC
 ** video
 *** celluloid
@@ -81,7 +85,7 @@ toolbox create
 *** doom emacs
 #+BEGIN_SRC bash
 # TODO actually install doom emacs
-toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs ripgrep fd-find
+toolbox run --container fedora-toolbox-40 sudo dnf install -y emacs ripgrep fd-find libvterm cmake libtool shellcheck shfmt nodejs-npm
 #+END_SRC
 *** stow
 #+BEGIN_SRC bash
@@ -94,8 +98,4 @@ toolbox run --container fedora-toolbox-40 sudo dnf install -y vim
 *** rust
 #+BEGIN_SRC bash
 toolbox run --container fedora-toolbox-40 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-#+END_SRC
-*** haskell
-#+BEGIN_SRC bash
-toolbox run --container fedora-toolbox-40 sudo dnf install -y stack
 #+END_SRC
