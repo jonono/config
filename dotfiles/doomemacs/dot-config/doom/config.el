@@ -40,7 +40,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/git/org/")
 
 ;; I throw TODOs pretty much all over my files so I need this.
 (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
