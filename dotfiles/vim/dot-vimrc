@@ -1,3 +1,6 @@
+set nocompatible
+filetype plugin on
+syntax on
 let g:mapleader = " "
 let g:maplocalleader = ','
 
@@ -19,12 +22,24 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vim-zettel'
 call plug#end()
 
 " appearance
 set termguicolors
-set background=dark
+set background=light
 colorscheme quiet
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/git/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': 'md'}]
+let g:vimwiki_global_ext = 0
+
+" vim-zettel
+let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always "
+nnoremap <leader>zn :ZettelNew<space>
+nnoremap <leader>zo :ZettelOpen<cr>
 
 " fzf.vim keymaps
 nnoremap <silent> <leader>ff :Files<cr>
