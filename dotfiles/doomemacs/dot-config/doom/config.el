@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+(setq user-full-name "Jon Billingsley"
+      user-mail-address "jon@jonono.ca")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -91,9 +91,6 @@
                                      ":END:")
                                    "\n"))
                     )))
-
-(after! org (add-to-list 'org-modules 'org-habit t))
-(setq org-habit-show-habits-only-for-today t)
 
 (add-hook! 'org-mode-hook  (setq visual-fill-column-width 100
                                  visual-fill-column-center-text t
